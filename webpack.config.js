@@ -26,7 +26,6 @@ var globals = {
   ReactDom: 'react-dom',
   ReactRouter: 'react-router',
   Perf: 'react-addons-perf',
-  'react-motion': 'react-motion',
   assign: 'object-assign',
   request: 'superagent',
   Symbol: 'es6-symbol'

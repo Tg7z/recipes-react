@@ -39,9 +39,9 @@
     "dry": "rm -rf ./dist && rm -rf ./build && webpack --production --progress --colors",
     "dry-up": "npm run dry && open http://localhost:8080 && node --harmony server/server.js",
 
-    "docker-build": "docker build -t hub.docker.com:/RecipesReact:latest .",
-    "docker-push": "docker push hub.docker.com/RecipesReact:latest",
-    "docker-run": "open http://`boot2docker ip`:8080 && docker run -ti -p 8080:8080 hub.docker.com/RecipesReact:latest",
+    "docker-build": "docker build -t hub.docker.com:/recipes-react:latest .",
+    "docker-push": "docker push hub.docker.com/recipes-react:latest",
+    "docker-run": "open http://`boot2docker ip`:8080 && docker run -ti -p 8080:8080 hub.docker.com/recipes-react:latest",
 
     "postinstall": ""
   },

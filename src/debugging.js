@@ -1,3 +1,5 @@
+'use strict';
+
 if (__DEV__ && process.env.BROWSER_ENV) {
   window.request = request;
   window.React = React;

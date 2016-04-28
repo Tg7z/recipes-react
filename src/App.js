@@ -1,34 +1,49 @@
-require('common/main.sass');
+'use strict';
+import { version } from '../package.json';
+// import { Spring } from 'react-motion';
+require('sass/main.sass');
 
-var versionInfo = (__DEV__ ? `v${require("../package.json").version}` : "");
-
-
-let { Spring } = require('react-motion');
+const versionInfo = (__DEV__ ? `v${version}` : "");
 
 // App
-let App = React.createClass({
-  getInitialState:() => ({
-    loaded: false,
-  }),
-  componentDidMount(){
-    this.setState({loaded:true});
-  },
-  render(){
-    var activeRouteName = this.props.location.pathname || '/';
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loaded: false,
+    };
+  }
+  componentDidMount() {
+    this.setState({
+      loaded: true,
+    });
+  }
+  render() {
+    const activeRouteName = this.props.location.pathname || '/';
     let start = (!this.state.loaded ? 1 : 0);
 
     return (
       <div className='app'>
-
-        <Spring defaultValue={{val:start}} endValue={{val:1}}>
-          {interpolated =>
-            <div style={{display: 'block', height: '100%', opacity: interpolated.val}}>
-              {this.props.children}
-            </div>}
-        </Spring>
+        <div style={{display: 'block', height: '100%'}}>
+          {this.props.children}
+        </div>
       </div>
     );
-  }
-});
 
-module.exports = App;
+    // return (
+    //   <div className='app'>
+
+    //     <Spring defaultValue={{val:start}} endValue={{val:1}}>
+    //       {interpolated =>
+    //         <div style={{display: 'block', height: '100%', opacity: interpolated.val}}>
+    //           {this.props.children}
+    //         </div>
+    //       }
+    //     </Spring>
+    //   </div>
+    // );
+  }
+};
+
+export default App;

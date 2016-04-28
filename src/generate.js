@@ -1,13 +1,12 @@
-'use strict'
+'use strict';
+import App from './App';
+import routes from './config/routes';
 
-var App = require('App'),
-  routes = require('routes')(App);
-
-var generate = function generate(path, props) {
-  var html = null;
+const generate = function generate(path, props) {
+  let html = null;
   Router.run(
     routes,
-    path, 
+    path,
     (Handler) =>
       html = React.renderToString(React.createFactory(Handler)(props))
   );
