@@ -25,7 +25,9 @@ class loginContainer extends React.Component {
       password: formData.get('password'),
     };
 
-    console.log(data);
+    Auth.login(data).catch( err => {
+      console.log('Error logging in', err);
+    });
   }
 
   render() {
