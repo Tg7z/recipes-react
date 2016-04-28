@@ -1,20 +1,39 @@
 'use strict';
+import Login from '../components/login';
+import Auth from '../services/authService';
 // let { PropTypes } = React;
-// import UI from '../components/UI';
 
 class loginContainer extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {};
   }
-  componentDidMount() {}
-  componentWillReceiveProps() {}
-  componentWillUnmount() {}
+
+  // componentDidMount() {}
+  // componentWillReceiveProps() {}
+  // componentWillUnmount() {}
+
+  handleSubmitLogin(ev, x) {
+    ev.preventDefault();
+
+    const form = ev.target;
+    // const form = document.querySelector('form');
+    const formData = new FormData(form);
+    const data = {
+      username: formData.get('username'),
+      password: formData.get('password'),
+    };
+
+    console.log(data);
+  }
+
   render() {
     return (
-      <div>Login</div>
-    )
+      <Login
+        onLoginSubmit={(event) => this.handleSubmitLogin(event)}
+      />
+    );
   }
 }
 
