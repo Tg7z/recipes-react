@@ -1,33 +1,34 @@
 'use strict';
 import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Login from '../components/login';
-import Auth from '../services/authService';
+import * as actionCreators from '../actions/authActions';
 
 class loginContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    const redirectRoute = this.props.location.query.next || '/login';
+
+    this.state = {
+      redirectTo: redirectRoute,
+    };
   }
 
   // componentDidMount() {}
   // componentWillReceiveProps() {}
   // componentWillUnmount() {}
 
-  handleSubmitLogin(ev, x) {
+  handleSubmitLogin(ev) {
     ev.preventDefault();
 
     const form = ev.target;
-    // const form = document.querySelector('form');
     const formData = new FormData(form);
-    const data = {
-      username: formData.get('username'),
-      password: formData.get('password'),
-    };
+    const username = formData.get('username');
+    const password = formData.get('password');
 
-    Auth.login(data).catch( err => {
-      console.log('Error logging in', err);
-    });
+    this.props.actions.loginUser(username, password, this.state.redirectTo);
   }
 
   render() {
@@ -39,6 +40,15 @@ class loginContainer extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  isAuthenticating : state.auth.isAuthenticating,
+  statusText       : state.auth.statusText,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions : bindActionCreators(actionCreators, dispatch),
+});
+
 // loginContainer.contextTypes = {};
 
-module.exports = loginContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(loginContainer);
