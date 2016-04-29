@@ -23,7 +23,7 @@ module.exports = (function(options){
 
 var globals = {
   React: 'react',
-  ReactDom: 'react-dom',
+  ReactDOM: 'react-dom',
   ReactRouter: 'react-router',
   Perf: 'react-addons-perf',
   assign: 'object-assign',

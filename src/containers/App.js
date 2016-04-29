@@ -1,10 +1,10 @@
 'use strict';
-import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { logoutAndRedirect } from '../actions/authActions';
 import '../sass/main.sass';
+
+const { Link } = ReactRouter;
 
 @connect((state) => {
   return {

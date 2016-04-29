@@ -36,4 +36,4 @@ const node = (
   <Root store={store} />
 );
 
-ReactDom.render( node, mount);
+ReactDOM.render( node, mount);

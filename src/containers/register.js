@@ -1,5 +1,4 @@
 'use strict';
-import React, { PropTypes } from 'react';
 // import UI from '../components/UI';
 
 class registerContainer extends React.Component {
