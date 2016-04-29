@@ -1,27 +1,15 @@
 'use strict';
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
 import App from '../App';
+import HomeView from '../containers/Home';
+import LoginView from '../containers/Login';
+import RegisterView from '../containers/Register';
 
-// const { Router, Route } = ReactRouter;
-
-// routes
-const routes = {
-  path: '/',
-  component: App,
-  onEnter: (router, replaceWith) => {
-    if (router.location.pathname === '/') {
-      replaceWith(null, '/login');
-    }
-  },
-  childRoutes:[
-    {
-      path:"/login",
-      getComponents:(a, cb) => require.ensure([], require => {cb(null, require('containers/login'));})
-    },
-    {
-      path:"/register",
-      getComponents:(a, cb) => require.ensure([], require => {cb(null, require('containers/register'));})
-    },
-  ]
-};
-
-export default routes;
+export default (
+  <Route path='/' component={ App }>
+    <IndexRoute component={ HomeView }/>
+    <Route path="login" component={ LoginView }/>
+    <Route path="register" component={ RegisterView }/>
+  </Route>
+);
