@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 // import UI from '../components/UI';
 
-class registerContainer extends React.Component {
+class homeContainer extends React.Component {
   constructor(props) {
     super(props)
 
@@ -13,11 +13,11 @@ class registerContainer extends React.Component {
   componentWillUnmount() {}
   render() {
     return (
-      <div>Register</div>
+      <div>Home</div>
     )
   }
 }
 
-// registerContainer.contextTypes = {};
+// homeContainer.contextTypes = {};
 
-export default registerContainer;
+export default homeContainer;

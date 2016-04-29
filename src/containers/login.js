@@ -1,7 +1,7 @@
 'use strict';
+import React, { PropTypes } from 'react';
 import Login from '../components/login';
 import Auth from '../services/authService';
-// let { PropTypes } = React;
 
 class loginContainer extends React.Component {
   constructor(props) {
