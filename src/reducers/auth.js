@@ -2,7 +2,7 @@
 import { createReducer } from '../helpers/utils';
 import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER } from '../constants/actions';
 import { pushState } from 'redux-router';
-import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode/lib';
 
 const initialState = {
   token: null,
