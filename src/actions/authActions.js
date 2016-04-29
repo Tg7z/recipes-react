@@ -1,5 +1,5 @@
 'use strict';
-// import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode/lib';
 import { pushState } from 'redux-router';
 import { checkHttpStatus, parseJSON } from '../helpers/utils';
 import { LOGIN_USER_REQUEST, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, FETCH_PROTECTED_DATA_REQUEST, RECEIVE_PROTECTED_DATA } from '../constants/actions';
@@ -49,7 +49,7 @@ export function logoutAndRedirect() {
   }
 }
 
-export function loginUser(email, password, redirect="/") {
+export function loginUser(username, password, redirect="/") {
   return function(dispatch) {
     dispatch(loginUserRequest());
 
@@ -60,13 +60,13 @@ export function loginUser(email, password, redirect="/") {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-        body: JSON.stringify({email: email, password: password})
+        body: JSON.stringify({username: username, password: password})
       })
       .then(checkHttpStatus)
       .then(parseJSON)
       .then(response => {
         try {
-          let decoded = response.token;//jwtDecode(response.token);
+          let decoded = jwtDecode(response.token);
           dispatch(loginUserSuccess(response.token));
           dispatch(pushState(null, redirect));
         } catch (e) {
