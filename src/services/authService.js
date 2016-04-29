@@ -1,7 +1,7 @@
 'use strict';
 import request from 'reqwest';
 import when from 'when';
-import { LOGIN_URL } from '../constants/loginConstants';
+import { LOGIN_URL } from '../constants/urls';
 import { loginUser, logoutUser } from '../actions/loginActions';
 
 class AuthService {
