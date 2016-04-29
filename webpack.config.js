@@ -33,7 +33,10 @@ var globals = {
 
 var baseConfig = {
   entry: {
-    app: ['./src/bootstrap.js'],
+    app: [
+      'babel-polyfill',
+      './src/bootstrap.js'
+    ],
     libs: Object.keys(globals).map(function(k){ return globals[k]; })
   },
 
@@ -59,7 +62,7 @@ var baseConfig = {
       test: /\.(js|jsx)$/,
       include: [/src/,/bower_components/],
       exclude: [/(node_modules)/],
-      loader: 'babel?plugins[]=transform-runtime&presets[]=es2015&presets[]=stage-0&presets[]=react&cacheDirectory=true',
+      loader: 'babel?plugins[]=transform-runtime&plugins[]=babel-plugin-transform-decorators-legacy&presets[]=es2015&presets[]=stage-0&presets[]=react&cacheDirectory=true',
     }, {
       test: /\.json$/,
       loader: 'json',
@@ -303,7 +306,7 @@ function updateCaching(config, options) {
 function updatePlugins(config, options) {
   config.plugins.push(new HtmlWebpackPlugin({
     filename: 'index.html',
-    template: 'src/assets/index.html'
+    template: 'src/assets/index.ejs'
   }));
 
   if(options.minimize) {
