@@ -34,7 +34,6 @@ var globals = {
 var baseConfig = {
   entry: {
     app: [
-      'babel-polyfill',
       './src/bootstrap.js'
     ],
     libs: Object.keys(globals).map(function(k){ return globals[k]; })
