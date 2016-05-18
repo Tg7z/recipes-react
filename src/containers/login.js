@@ -8,7 +8,7 @@ class loginContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    const redirectRoute = this.props.location.query.next || '/login';
+    const redirectRoute = this.props.location.query.next || '/';
 
     this.state = {
       redirectTo: redirectRoute,
@@ -24,8 +24,8 @@ class loginContainer extends React.Component {
 
     const form = ev.target;
     const formData = new FormData(form);
-    const username = formData.get('username');
-    const password = formData.get('password');
+    const username = formData.get('recipes-username');
+    const password = formData.get('recipes-password');
 
     this.props.actions.loginUser(username, password, this.state.redirectTo);
   }
