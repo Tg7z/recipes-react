@@ -1,8 +1,9 @@
 'use strict';
 import { createReducer } from '../helpers/utils';
-import { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER } from '../constants/actions';
-import { pushState } from 'redux-router';
+import actions from '../constants/actions';
 import jwtDecode from 'jwt-decode/lib';
+
+const { LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER } = actions;
 
 const initialState = {
   token: null,
@@ -24,7 +25,7 @@ export default createReducer(initialState, {
       'isAuthenticating': false,
       'isAuthenticated': true,
       'token': payload.token,
-      'userName': jwtDecode(payload.token).userName,
+      'username': jwtDecode(payload.token).username,
       'statusText': 'You have been successfully logged in.'
     });
 
@@ -34,7 +35,7 @@ export default createReducer(initialState, {
       'isAuthenticating': false,
       'isAuthenticated': false,
       'token': null,
-      'userName': null,
+      'username': null,
       'statusText': `Authentication Error: ${payload.status} ${payload.statusText}`
     });
   },
@@ -42,7 +43,7 @@ export default createReducer(initialState, {
     return Object.assign({}, state, {
       'isAuthenticated': false,
       'token': null,
-      'userName': null,
+      'username': null,
       'statusText': 'You have been successfully logged out.'
     });
   }

@@ -1,9 +1,12 @@
 'use strict';
 import jwtDecode from 'jwt-decode/lib';
-import { pushState } from 'redux-router';
+import { push } from 'redux-router';
 import { checkHttpStatus, parseJSON } from '../helpers/utils';
-import { LOGIN_USER_REQUEST, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, FETCH_PROTECTED_DATA_REQUEST, RECEIVE_PROTECTED_DATA } from '../constants/actions';
-import { LOGIN_URL, PROTECTED_URL } from '../constants/urls';
+import actions from '../constants/actions';
+import urls from '../constants/urls';
+
+const { LOGIN_USER_REQUEST, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER, FETCH_PROTECTED_DATA_REQUEST, RECEIVE_PROTECTED_DATA } = actions;
+const { LOGIN_URL, PROTECTED_URL } = urls;
 
 export function loginUserSuccess(token) {
   localStorage.setItem('token', token);
@@ -45,7 +48,7 @@ export function logout() {
 export function logoutAndRedirect() {
   return (dispatch, state) => {
     dispatch(logout());
-    dispatch(pushState(null, '/login'));
+    dispatch(push('/login'));
   }
 }
 
@@ -65,10 +68,11 @@ export function loginUser(username, password, redirect="/") {
       .then(checkHttpStatus)
       .then(parseJSON)
       .then(response => {
+        // console.log('auth response', response);
         try {
           let decoded = jwtDecode(response.token);
           dispatch(loginUserSuccess(response.token));
-          dispatch(pushState(null, redirect));
+          dispatch(push(redirect));
         } catch (e) {
           dispatch(loginUserFailure({
             response: {
@@ -117,7 +121,7 @@ export function fetchProtectedData(token) {
       .catch(error => {
         if(error.response.status === 401) {
           dispatch(loginUserFailure(error));
-          dispatch(pushState(null, '/login'));
+          dispatch(push('/login'));
         }
       })
      }
