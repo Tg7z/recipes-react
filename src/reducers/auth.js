@@ -21,7 +21,6 @@ export default createReducer(initialState, {
     });
   },
   [LOGIN_USER_SUCCESS]: (state, payload) => {
-    console.log(jwtDecode(payload.token));
     return Object.assign({}, state, {
       'isAuthenticating': false,
       'isAuthenticated': true,
