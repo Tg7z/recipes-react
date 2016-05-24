@@ -5,5 +5,5 @@ export default {
   API_URL,
   LOGIN_URL: `${API_URL}authenticate`,
   REGISTER_URL: `${API_URL}register`,
-  PROTECTED_URL: `${API_URL}protected`,
+  USERS_URL: `${API_URL}users`,
 };

@@ -40,10 +40,19 @@ export function requireAuthentication(Component) {
 
   const mapStateToProps = (state) => ({
     token: state.auth.token,
-    userName: state.auth.userName,
+    email: state.auth.email,
     isAuthenticated: state.auth.isAuthenticated
   });
 
   return connect(mapStateToProps)(AuthenticatedComponent);
 
+}
+
+export function authHeaders(token) {
+  return {
+    credentials: 'include',
+    headers: {
+      'jwt': token
+    }
+  }
 }
