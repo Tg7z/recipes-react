@@ -52,7 +52,7 @@ export function logoutAndRedirect() {
   }
 }
 
-export function loginUser(username, password, redirect="/") {
+export function loginUser(email, password, redirect="/") {
   return function(dispatch) {
     dispatch(loginUserRequest());
 
@@ -63,7 +63,7 @@ export function loginUser(username, password, redirect="/") {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-        body: JSON.stringify({username: username, password: password})
+        body: JSON.stringify({ email: email, password: password })
       })
       .then(checkHttpStatus)
       .then(parseJSON)

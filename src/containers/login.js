@@ -24,10 +24,10 @@ class loginContainer extends React.Component {
 
     const form = ev.target;
     const formData = new FormData(form);
-    const username = formData.get('recipes-username');
+    const email = formData.get('recipes-email');
     const password = formData.get('recipes-password');
 
-    this.props.actions.loginUser(username, password, this.state.redirectTo);
+    this.props.actions.loginUser(email, password, this.state.redirectTo);
   }
 
   render() {
