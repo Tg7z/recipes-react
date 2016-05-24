@@ -2,7 +2,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Login from '../components/login';
-import * as actionCreators from '../actions/authActions';
+import * as actionCreators from '../actions/auth';
 
 class loginContainer extends React.Component {
   constructor(props) {

@@ -2,7 +2,7 @@
 // import 'babel-core/polyfill';
 import Root from './containers/Root';
 import configureStore from './config/store';
-import { loginUserSuccess } from './actions/authActions';
+import { loginUserSuccess } from './actions/auth';
 
 import './assets/icons/AppIcon152x152.png';
 import './assets/icons/AppIcon120x120.png';

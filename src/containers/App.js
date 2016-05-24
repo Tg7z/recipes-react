@@ -1,7 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { logoutAndRedirect } from '../actions/authActions';
+import { logoutAndRedirect } from '../actions/auth';
 import '../sass/main.sass';
 
 const { Link } = ReactRouter;

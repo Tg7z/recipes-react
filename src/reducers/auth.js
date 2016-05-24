@@ -47,5 +47,5 @@ export default createReducer(initialState, {
       'email': null,
       'statusText': 'You have been successfully logged out.'
     });
-  }
+  },
 });
